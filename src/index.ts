@@ -7,6 +7,7 @@ import morgan from 'morgan';
 
 import {errorHandler} from './middleware/error.middleware';
 import {notFoundHandler} from './middleware/not-found.middleware';
+import {connectToMongoDatabase} from './services/db/mongo-database.service';
 
 dotenv.config();
 
@@ -25,6 +26,11 @@ app.use(morgan('dev'));
 
 app.use(errorHandler);
 app.use(notFoundHandler);
+
+connectToMongoDatabase().catch((error) => {
+	console.error('Database connection failed', error);
+	process.exit(0);
+});
 
 app.listen(PORT, () => {
 	console.log(`Listening on port ${PORT}`);
