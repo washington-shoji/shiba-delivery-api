@@ -1,7 +1,7 @@
 import {IOrder} from './../interfaces/order.interface';
 import {collections} from '../../../services/db/mongo-database.service';
 
-export const createOrder = async (newOrder: IOrder): Promise<IOrder> => {
+export async function createOrder(newOrder: IOrder): Promise<IOrder> {
 	try {
 		const order: IOrder = (await collections.order?.insertOne(
 			newOrder
@@ -16,4 +16,4 @@ export const createOrder = async (newOrder: IOrder): Promise<IOrder> => {
 
 		throw new Error('Unable to create order');
 	}
-};
+}
