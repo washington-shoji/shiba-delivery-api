@@ -8,6 +8,7 @@ import morgan from 'morgan';
 import {errorHandler} from './middleware/error.middleware';
 import {notFoundHandler} from './middleware/not-found.middleware';
 import {connectToMongoDatabase} from './services/db/mongo-database.service';
+import {orderRouter} from './features/order/routes/order.routes';
 
 dotenv.config();
 
@@ -24,12 +25,14 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
 
+app.use('/api/order', orderRouter);
+
 app.use(errorHandler);
 app.use(notFoundHandler);
 
 connectToMongoDatabase().catch((error) => {
 	console.error('Database connection failed', error);
-	process.exit(0);
+	process.exit();
 });
 
 app.listen(PORT, () => {
