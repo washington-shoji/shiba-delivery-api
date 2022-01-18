@@ -1,6 +1,6 @@
 import {Request, Response, NextFunction} from 'express';
-import {IOrder} from '../interfaces/order.interface';
-import * as orderService from '../service/order.service';
+import {IOrderToClient} from '../interfaces/order.interface';
+import {createOrderService} from '../service/create-order.service';
 
 export async function createOrderController(
 	req: Request,
@@ -8,8 +8,10 @@ export async function createOrderController(
 	next: NextFunction
 ) {
 	try {
-		const order: IOrder = req.body;
-		const newItem: IOrder = await orderService.createOrder(order);
+		const order: IOrderToClient = req.body;
+		console.log('ORDER', order);
+
+		const newItem: IOrderToClient = await createOrderService(order);
 
 		res.status(201).json(newItem);
 	} catch (error: any) {

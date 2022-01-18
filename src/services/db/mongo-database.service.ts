@@ -1,13 +1,13 @@
 import * as mongoDB from 'mongodb';
 import * as dotenv from 'dotenv';
-import {IOrder} from './../../features/order/interfaces/order.interface';
+import {IOrderToClient} from './../../features/order/interfaces/order.interface';
 
 dotenv.config();
 
 const {MONGO_USER, MONGO_PASSWORD, MONGO_PATH, DB_NAME, ORDER_COLLECTION_NAME} =
 	process.env;
 
-export const collections: {order?: mongoDB.Collection<IOrder>} = {};
+export const collections: {order?: mongoDB.Collection<IOrderToClient>} = {};
 
 export async function connectToMongoDatabase(): Promise<void> {
 	try {
@@ -19,9 +19,8 @@ export async function connectToMongoDatabase(): Promise<void> {
 
 		const db: mongoDB.Db = client.db(`${DB_NAME}`);
 
-		const orderCollection: mongoDB.Collection<IOrder> = db.collection<IOrder>(
-			`${ORDER_COLLECTION_NAME}`
-		);
+		const orderCollection: mongoDB.Collection<IOrderToClient> =
+			db.collection<IOrderToClient>(`${ORDER_COLLECTION_NAME}`);
 
 		// Persist the connection to the collections
 		collections.order = orderCollection;

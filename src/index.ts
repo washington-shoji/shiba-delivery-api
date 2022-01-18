@@ -25,7 +25,7 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
 
-app.use('/api/order', orderRouter);
+app.use('/api', orderRouter);
 
 app.use(errorHandler);
 app.use(notFoundHandler);
