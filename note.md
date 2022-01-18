@@ -10,13 +10,13 @@ express dotenv cors helmet
 
 I.e. yarn add --dev
 
-typescript ts-node-dev mongodb
+typescript ts-node-dev morgan mongodb
 
 ### Types
 
 I.e. yarn add --dev
 
-@types/node @types/express @types/dotenv @types/cors @types/helmet
+@types/node @types/express @types/dotenv @types/cors @types/helmet @types/morgan
 
 ## Initialise tsconfig.json file for typescript
 
