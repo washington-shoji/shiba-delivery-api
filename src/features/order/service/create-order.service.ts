@@ -1,6 +1,5 @@
 import {IOrderToClient} from '../interfaces/order.interface';
 import {collections} from '../../../services/db/mongo-database.service';
-import {ObjectId} from 'mongodb';
 
 export async function createOrderService(
 	newOrderData: IOrderToClient
@@ -15,4 +14,3 @@ export async function createOrderService(
 		throw new Error('Unable to create order');
 	}
 }
-
