@@ -6,6 +6,7 @@ export async function deleteOrderService(id: string): Promise<void | null> {
 		const query = {_id: new ObjectId(id)};
 		const deletedOrder: DeleteResult | undefined =
 			await collections.order?.deleteOne(query);
+
 		if (deletedOrder?.deletedCount === 0) {
 			throw new Error('could not find the order');
 		}

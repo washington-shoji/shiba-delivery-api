@@ -5,7 +5,7 @@ export async function createOrderService(
 	newOrderData: IOrderToClient
 ): Promise<IOrderToClient> {
 	try {
-		const newOrder: IOrderToClient = (await collections.order?.insertOne(
+		const newOrder: IOrderToClient = (await collections.order!.insertOne(
 			newOrderData
 		)) as unknown as IOrderToClient;
 
