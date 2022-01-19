@@ -7,13 +7,13 @@ export async function getSingleOrderService(
 ): Promise<IOrderToClient> {
 	try {
 		const query = {_id: new ObjectId(id)};
-		const fetchedService: WithId<IOrderToClient> | null =
+		const fetchedServiceResponse: WithId<IOrderToClient> | null =
 			await collections.order!.findOne(query);
 
-		if (!fetchedService?._id) {
+		if (!fetchedServiceResponse?._id) {
 			throw new Error('could not find the order');
 		}
-		const fetchedOrder: IOrderToClient = fetchedService;
+		const fetchedOrder: IOrderToClient = fetchedServiceResponse;
 		return fetchedOrder;
 	} catch (error: any) {
 		throw new Error(`Unable to fetch order, due to ${error.message}`);

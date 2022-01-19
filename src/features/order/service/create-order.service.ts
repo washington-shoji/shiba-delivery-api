@@ -2,11 +2,11 @@ import {IOrderToClient} from '../interfaces/order.interface';
 import {collections} from '../../../services/db/mongo-database.service';
 
 export async function createOrderService(
-	newOrderData: IOrderToClient
+	createOrderData: IOrderToClient
 ): Promise<IOrderToClient> {
 	try {
 		const newOrder: IOrderToClient = (await collections.order!.insertOne(
-			newOrderData
+			createOrderData
 		)) as unknown as IOrderToClient;
 
 		return newOrder;

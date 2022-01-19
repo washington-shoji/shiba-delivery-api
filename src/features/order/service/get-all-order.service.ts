@@ -8,14 +8,13 @@ export async function getAllOrderService(): Promise<IOrderToClient[]> {
 		// Passing a forEach through the cursor is a performance optimisations
 		// As the .toArray({}), can lead to memory exhaustion or performances issues
 		// In the case of a large collection of documents
-		const fetchedServiceCursor: FindCursor<WithId<IOrderToClient>> =
+		const fetchedServiceCursorResponse: FindCursor<WithId<IOrderToClient>> =
 			collections.order!.find({});
 
-		const fetchedServiceData: void = await fetchedServiceCursor.forEach(
-			(doc) => {
+		const fetchedServiceIteratedData: void =
+			await fetchedServiceCursorResponse.forEach((doc) => {
 				fetchedOrders.push(doc);
-			}
-		);
+			});
 
 		return fetchedOrders;
 	} catch (error) {
