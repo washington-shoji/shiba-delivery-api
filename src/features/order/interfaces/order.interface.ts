@@ -2,6 +2,7 @@ import {ObjectId} from 'mongodb';
 
 export interface IOrderToClient {
 	name: string;
+	email: string;
 	phone: number;
 	quantity: number;
 }
