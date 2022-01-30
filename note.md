@@ -10,7 +10,7 @@ express dotenv cors helmet
 
 I.e. yarn add --dev
 
-typescript ts-node-dev morgan mongodb
+typescript ts-node-dev morgan mongodb express-jwt jwks-rsa express-jwt-authz
 
 ### Types
 

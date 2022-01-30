@@ -27,13 +27,13 @@ app.use(morgan('dev'));
 
 app.use('/api', orderRouter);
 
-app.use(errorHandler);
-app.use(notFoundHandler);
-
 connectToMongoDatabase().catch((error) => {
 	console.error('Database connection failed', error);
 	process.exit();
 });
+
+app.use(errorHandler);
+app.use(notFoundHandler);
 
 app.listen(PORT, () => {
 	console.log(`Listening on port ${PORT}`);
