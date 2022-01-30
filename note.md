@@ -4,7 +4,7 @@
 
 I.e. yarn add
 
-express dotenv cors helmet
+express dotenv cors helmet joi express-jwt express-jwt-authz helmet jwks-rsa mongodb
 
 ## Dev Dependencies
 

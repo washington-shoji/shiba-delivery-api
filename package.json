@@ -13,6 +13,7 @@
 		"express-jwt": "^6.1.0",
 		"express-jwt-authz": "^2.4.1",
 		"helmet": "^5.0.1",
+		"joi": "^17.6.0",
 		"jwks-rsa": "^2.0.5",
 		"mongodb": "^4.3.0"
 	},
