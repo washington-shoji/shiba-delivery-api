@@ -1,6 +1,7 @@
 import * as mongoDB from 'mongodb';
 import * as dotenv from 'dotenv';
 import {IOrderToClient} from './../../features/order/interfaces/order.interface';
+import {applySchemaValidation} from '../schemas/orderJsonSchema';
 
 dotenv.config();
 
@@ -18,6 +19,8 @@ export async function connectToMongoDatabase(): Promise<void> {
 		await client.connect();
 
 		const db: mongoDB.Db = client.db(`${DB_NAME}`);
+
+		await applySchemaValidation(db);
 
 		const orderCollection: mongoDB.Collection<IOrderToClient> =
 			db.collection<IOrderToClient>(`${ORDER_COLLECTION_NAME}`);
